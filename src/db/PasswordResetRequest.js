@@ -1,6 +1,6 @@
 import ORM from './ORM'
 
 export default ORM().Model.extend({
-  tableName: 'users',
+  tableName: 'password_reset_requests',
   hasTimestamps: true,
 })

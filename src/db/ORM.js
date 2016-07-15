@@ -7,7 +7,7 @@ let orm = null
 
 export default () => {
   if (!orm) {
-    orm = bookshelf(knex({
+    const client = knex({
       client: 'pg',
       connection: {
         host: PG_HOST,
@@ -15,7 +15,13 @@ export default () => {
         password: PG_PASSWORD,
         database: PG_DATABASE,
       },
-    }))
+    })
+
+    client.on('query', (data) => {
+      console.log(data.sql)
+    })
+
+    orm = bookshelf(client)
   }
 
   return orm

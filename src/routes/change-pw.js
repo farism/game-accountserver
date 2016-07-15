@@ -6,7 +6,7 @@ import User from '../db/User'
 
 export default {
   method: 'POST',
-  path: '/reset',
+  path: '/change-pw',
   config: {
     validate: {
       payload: {
@@ -32,6 +32,7 @@ export default {
 
     try {
       await user.set('password', newHash).save()
+
       return reply('Password updated successfully')
     } catch (e) {
       return reply(Boom.badImplementation('Invalid request'))

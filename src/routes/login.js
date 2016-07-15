@@ -20,10 +20,13 @@ export default {
 
     if (user) {
       if (bcrypt.compareSync(password, user.attributes.password)) {
-        return reply('Login Successful!')
+        return reply({
+          id: user.attributes.id,
+          username: user.attributes.username,
+        })
       }
     }
 
-    return reply(Boom.unauthorized('Bad email or password'))
+    return reply(Boom.unauthorized('Invalid email or password'))
   },
 }
