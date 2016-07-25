@@ -4,8 +4,8 @@ import moment from 'moment'
 import { createHmac } from 'crypto'
 import { hashSync } from 'bcrypt'
 
-import PasswordResetRequest from '../db/PasswordResetRequest'
-import User from '../db/User'
+import PasswordResetRequest from '../models/PasswordResetRequest'
+import User from '../models/User'
 
 export default {
   method: 'POST',
