@@ -1,6 +1,7 @@
 import Boom from 'boom'
 import Joi from 'joi'
 import bcrypt from 'bcrypt'
+import { v4 } from 'uuid'
 
 import User from '../models/User'
 
@@ -20,9 +21,13 @@ export default {
 
     if (user) {
       if (bcrypt.compareSync(password, user.attributes.password)) {
+        const { id, username } = user.attributes
+        const session = v4()
+
         return reply({
-          id: user.attributes.id,
-          username: user.attributes.username,
+          id,
+          username,
+          session,
         })
       }
     }

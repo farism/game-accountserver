@@ -2,7 +2,7 @@ import Boom from 'boom'
 import Joi from 'joi'
 import bcrypt from 'bcrypt'
 
-import User from '../db/User'
+import User from '../models/User'
 
 export default {
   method: 'POST',

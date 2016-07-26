@@ -5,8 +5,8 @@ import nodemailer from 'nodemailer'
 import { v4 } from 'uuid'
 import { createHmac } from 'crypto'
 
-import PasswordResetRequest from '../db/PasswordResetRequest'
-import User from '../db/User'
+import PasswordResetRequest from '../models/PasswordResetRequest'
+import User from '../models/User'
 
 const { GMAIL_USER, GMAIL_PASSWORD } = process.env
 

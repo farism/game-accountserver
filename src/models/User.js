@@ -1,4 +1,4 @@
-import ORM from './ORM'
+import ORM from '../orm'
 
 export default ORM().Model.extend({
   tableName: 'users',
