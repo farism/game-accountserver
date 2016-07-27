@@ -1,17 +1,43 @@
 import Hapi from 'hapi'
+import Inert from 'inert'
+import Vision from 'vision'
+import HapiSwagger from 'hapi-swagger'
 
 import routes from './routes'
 
-const webServer = new Hapi.Server()
+const plugins = [
+  Inert,
+  Vision,
+  {
+    register: HapiSwagger,
+    options: {
+      info: {
+        title: 'Test API Documentation',
+        version: '1',
+      },
+    },
+  },
+]
 
-webServer.connection({ host: 'localhost', port: 8080 })
+const server = new Hapi.Server()
 
-webServer.route(routes)
+server.connection({ host: 'localhost', port: 8080 })
 
-webServer.start((err) => {
-  if (err) {
-    throw err
+server.route(routes)
+
+const start = async () => {
+  try {
+    await server.register(plugins)
+  } catch (e) {
+    console.error('could not register plugins: ', e)
   }
 
-  console.log('Server running at:', webServer.info.uri)
-})
+  try {
+    await server.start()
+    console.log('Server running at:', server.info.uri)
+  } catch (e) {
+    console.error('could not start server: ', e)
+  }
+}
+
+start()

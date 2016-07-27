@@ -9,6 +9,7 @@ export default {
   method: 'POST',
   path: '/login',
   config: {
+    tags: ['api'],
     validate: {
       payload: {
         email: Joi.string().email().required(),

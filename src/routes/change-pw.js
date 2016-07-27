@@ -8,6 +8,7 @@ export default {
   method: 'POST',
   path: '/change-pw',
   config: {
+    tags: ['api'],
     validate: {
       payload: {
         email: Joi.string().email().required(),

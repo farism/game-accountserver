@@ -37,6 +37,7 @@ export default {
   method: 'POST',
   path: '/reset-pw',
   config: {
+    tags: ['api'],
     validate: {
       payload: {
         email: Joi.string().email().required(),

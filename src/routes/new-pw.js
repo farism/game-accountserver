@@ -11,6 +11,7 @@ export default {
   method: 'POST',
   path: '/new-pw',
   config: {
+    tags: ['api'],
     validate: {
       payload: {
         reset_code: Joi.string().min(2).max(255).required(),
