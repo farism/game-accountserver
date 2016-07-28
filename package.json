@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "rm -rf lib",
     "build": "NODE_ENV=production node_modules/.bin/babel src -d lib",
+    "deploy": "git push dokku master",
     "dev": "NODE_ENV=development nodemon -r babel-core/register -r dotenv/config src/index.js",
     "migrate": "NODE_ENV=development node_modules/.bin/knex migrate:latest",
     "start": "npm run clean && npm run build && node -r dotenv/config lib/index.js",
@@ -18,6 +19,7 @@
     "bluebird": "^3.4.1",
     "bookshelf": "^0.10.0",
     "boom": "^3.2.2",
+    "dotenv": "^2.0.0",
     "hapi": "^13.4.1",
     "hapi-auth-jwt2": "^7.0.1",
     "hapi-swagger": "^6.2.0",
