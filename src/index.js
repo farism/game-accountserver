@@ -5,6 +5,8 @@ import HapiSwagger from 'hapi-swagger'
 
 import routes from './routes'
 
+const { PORT } = process.env
+
 const plugins = [
   Inert,
   Vision,
@@ -21,7 +23,7 @@ const plugins = [
 
 const server = new Hapi.Server()
 
-server.connection({ host: 'localhost', port: 8080 })
+server.connection({ port: PORT })
 
 server.route(routes)
 
