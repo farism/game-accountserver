@@ -5,7 +5,7 @@ import HapiSwagger from 'hapi-swagger'
 
 import routes from './routes'
 
-const { PORT } = process.env
+const { SERVER_HOST, SERVER_ADDRESS, SERVER_PORT } = process.env
 
 const plugins = [
   Inert,
@@ -23,7 +23,11 @@ const plugins = [
 
 const server = new Hapi.Server()
 
-server.connection({ port: PORT })
+server.connection({
+  host: SERVER_HOST,
+  address: SERVER_ADDRESS,
+  port: SERVER_PORT,
+})
 
 server.route(routes)
 

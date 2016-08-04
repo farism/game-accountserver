@@ -20,6 +20,8 @@ export default {
   handler: async ({ payload: { email, password } }, reply) => {
     const user = await new User({ email }).fetch()
 
+    console.log(user)
+
     if (user) {
       if (bcrypt.compareSync(password, user.attributes.password)) {
         const { id, username } = user.attributes

@@ -1,7 +1,7 @@
 import knex from 'knex'
 import bookshelf from 'bookshelf'
 
-const { PG_HOST, PG_USERNAME, PG_PASSWORD, PG_DATABASE } = process.env
+const { POSTGRES_HOST, POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_DB } = process.env
 
 let orm = null
 
@@ -10,10 +10,10 @@ export default () => {
     const client = knex({
       client: 'pg',
       connection: {
-        host: PG_HOST,
-        user: PG_USERNAME,
-        password: PG_PASSWORD,
-        database: PG_DATABASE,
+        host: POSTGRES_HOST,
+        user: POSTGRES_USER,
+        password: POSTGRES_PASSWORD,
+        database: POSTGRES_DB,
       },
     })
 
