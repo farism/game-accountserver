@@ -3,7 +3,6 @@ import Inert from 'inert'
 import Vision from 'vision'
 import HapiSwagger from 'hapi-swagger'
 
-
 import routes from './routes'
 
 const { SERVER_HOST, SERVER_ADDRESS, SERVER_PORT } = process.env
